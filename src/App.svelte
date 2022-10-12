@@ -1,9 +1,16 @@
 <script>
   export let name;
   export let age = 85;
+  let toggle = false;
+  let fruits = ['Apple', 'Banana', 'Orange', 'Cherry', 'Mango'];
+
   const assign = () => {
     name = 'Heorpy';
     age = 36;
+  };
+
+  const deleteFruit = () => {
+    fruits = fruits.slice(1);
   };
 </script>
 
@@ -17,6 +24,20 @@
   <img src="" alt={name} />
   <input type="text" bind:value={name} />
   <button on:click={assign}> Assign </button>
+  <button on:click={() => (toggle = !toggle)}> Toggle </button>
+
+  {#if toggle}
+    <h1>Hello {name}!</h1>
+  {:else}
+    <div>No name!</div>
+  {/if}
+
+  <ul>
+    {#each fruits as fruit}
+      <li>{fruit}</li>
+    {/each}
+  </ul>
+  <button on:click={deleteFruit}> Eat it! </button>
 </main>
 
 <style>
