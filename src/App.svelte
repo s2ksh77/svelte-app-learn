@@ -1,14 +1,15 @@
 <script>
-  import Fruits from './Fruits.svelte';
-  let fruits = ['Apple', 'Banana', 'Cherry', 'Orange', 'Mange'];
+  import { storeName } from './store.js';
+  import Parent from './Parent.svelte';
+  let name = 'world';
+  console.log(storeName); // 객체, set, subscribe, update
+  console.log($storeName); // 값을 확인 하는것 auto subscription
+  $storeName = name;
 </script>
 
 <main>
-  <Fruits {fruits} />
-  <Fruits fruits={[...fruits].reverse()} />
-  <Fruits {fruits} reverse />
-  <Fruits {fruits} slice="-2" />
-  <Fruits {fruits} slice="0, 3" />
+  <h1>Hello {name}</h1>
+  <Parent />
 </main>
 
 <style>
